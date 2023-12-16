@@ -43,14 +43,16 @@ export const RepoDetails: FC<Repository> = ({
           {t('updated_at')}:
           <BoldText>{format(new Date(updatedAt), 'dd MMM yyyy')}</BoldText>
         </Text>
-        <Text>
-          {t('fork_count')}:
-          <BoldText>{forkCount}</BoldText>
-        </Text>
-        <Text>
-          {t('star_count')}:
-          <BoldText>{stargazerCount}</BoldText>
-        </Text>
+        <Block flexDirection={['row', 'column']}>
+          <Text pr="s">
+            {t('fork_count')}:
+            <BoldText>{forkCount}</BoldText>
+          </Text>
+          <Text>
+            {t('star_count')}:
+            <BoldText>{stargazerCount}</BoldText>
+          </Text>
+        </Block>
         {primaryLanguage && (
           <Text>
             {t('primary_language')}:
