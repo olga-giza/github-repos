@@ -7,6 +7,7 @@ import { Block } from '../../ui/Block';
 import { Card } from '../../ui/Card';
 import { Search as SearchBar } from '../../ui/Search';
 import { Spinner } from '../../ui/Spinner';
+import { Text } from '../../ui/Typography';
 import { useLocale } from '../locale';
 import { Pagination } from '../../ui/Pagination';
 import { type Repository } from './types';
@@ -49,11 +50,11 @@ const Search: FC = () => {
         <SearchBar onSubmit={onSubmit} />
       </CenteredElement>
       <Block flex={1} overflow="auto" width="100%" alignItems="center">
-        <CenteredElement>
+        <CenteredElement flex={1}>
           {loading ? (
-            <Block p="12px" alignItems="center">
-              {t('loading')}
+            <Block p="12px" flex={1} alignItems="center" justifyContent="center">
               <Spinner />
+              <Text my="12px">{t('loading')}</Text>
             </Block>
           ) : error ? (
             <Alert m="12px">{t('loading_error')}: {'Unknown'}</Alert>

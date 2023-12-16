@@ -32,8 +32,8 @@ export const Text: IStyledComponent<'web', TextProps> = styled.div`
 `;
 
 Text.defaultProps = {
-  fontSize: '16px',
-  lineHeight: '26px',
+  fontSize: ['14px', '16px'],
+  lineHeight: ['22px', '26px'],
   color: 'neutral.70',
 };
 

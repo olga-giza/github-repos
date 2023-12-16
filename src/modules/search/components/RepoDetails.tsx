@@ -57,7 +57,7 @@ export const RepoDetails: FC<Repository> = ({
           </Text>
         )}
       </Block>
-      <Block alignItems="flex-end">
+      <Block alignItems={['center', 'flex-end']}>
         <Avatar src={owner.avatarUrl} height="100" width="100" alt={owner.login}/>
         <Text>
           {t('by')}:

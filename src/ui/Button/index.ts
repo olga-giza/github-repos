@@ -39,7 +39,7 @@ BaseButton.defaultProps = {
   border: 'none',
   borderRadius: 3,
   lineHeight: '36px',
-  fontSize: 18,
+  fontSize: [14, 18],
   px: 32,
 };
 
