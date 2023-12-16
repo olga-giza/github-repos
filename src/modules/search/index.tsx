@@ -1,8 +1,8 @@
-import React, { FC, FormEvent, Fragment, useState } from 'react';
+import React, { FC, FormEvent, useState } from 'react';
 import styled from 'styled-components';
 
 import { collectFormData } from '../../utils/form';
-import { Alert } from '../../ui/Alert';
+import { Error, Warning } from '../../ui/Alert';
 import { Block } from '../../ui/Block';
 import { Card } from '../../ui/Card';
 import { Search as SearchBar } from '../../ui/Search';
@@ -57,8 +57,8 @@ export const Search: FC = () => {
               <Text my="12px">{t('loading')}</Text>
             </Block>
           ) : error ? (
-            <Alert m="12px">{t('loading_error')}: {error.message}</Alert>
-          ) : data?.search.edges.length ? (
+            <Error>{t('loading_error')}: {error.message}</Error>
+          ) : !data?.search.edges.length ? (
             <List>
               {data?.search.edges.map(({ node }) => (
                 <Card as="li" key={node.id} mb="xs">
@@ -67,7 +67,7 @@ export const Search: FC = () => {
               ))}
             </List>
           ) : (
-            <Fragment>{t('empty_results')}</Fragment>
+            <Warning>{t('empty_results')}</Warning>
           )}
         </CenteredElement>
       </Block>
