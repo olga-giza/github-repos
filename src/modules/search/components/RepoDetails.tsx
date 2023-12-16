@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import format from 'date-fns/format';
+import styled from 'styled-components';
+
 import { useLocale } from '../../locale';
 import { Block } from '../../../ui/Block';
 import { Text } from '../../../ui/Typography';
 import { Link } from '../../../ui/Link';
-import { Repository } from '../types';
-import styled from 'styled-components';
+import { type Repository } from '../types';
 
 const Avatar = styled.img`
   border-radius: 50%;

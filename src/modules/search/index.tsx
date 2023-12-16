@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { collectFormData } from '../../utils/form';
 import { Error, Warning } from '../../ui/Alert';
 import { Block } from '../../ui/Block';
-import { Card } from '../../ui/Card';
 import { Search as SearchBar } from '../../ui/Search';
 import { Spinner } from '../../ui/Spinner';
 import { Text } from '../../ui/Typography';
@@ -12,7 +11,7 @@ import { useLocale } from '../locale';
 import { Pagination } from '../../ui/Pagination';
 import { type Repository } from './types';
 import { usePaginatedQuery } from './hooks/usePaginatedQuery';
-import { RepoDetails } from './components/RepoDetails';
+import { RepoList } from './components/RepoList';
 
 interface SearchForm {
   search: string;
@@ -24,12 +23,6 @@ CenteredElement.defaultProps = {
   maxWidth: '1000px',
   width: '100%',
 };
-
-const List = styled.ul`
-  margin: ${({ theme }) => theme.space.s};
-  list-style: none;
-  padding: 0;
-`;
 
 export const Search: FC = () => {
   const [query, setQuery] = useState<string>('');
@@ -58,14 +51,8 @@ export const Search: FC = () => {
             </Block>
           ) : error ? (
             <Error>{t('loading_error')}: {error.message}</Error>
-          ) : !data?.search.edges.length ? (
-            <List>
-              {data?.search.edges.map(({ node }) => (
-                <Card as="li" key={node.id} mb="xs">
-                  <RepoDetails {...node} />
-                </Card>
-              ))}
-            </List>
+          ) : data?.search.edges.length ? (
+            <RepoList data={data?.search.edges}/>
           ) : (
             <Warning>{t('empty_results')}</Warning>
           )}
