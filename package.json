@@ -9,7 +9,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
-    "serve": "serve -s build -l 4000",
+    "serve": "serve -s build -l 4000 -n",
     "postinstall": "husky install",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "yarn lint --fix"
@@ -27,8 +27,7 @@
     "serve": "^14.2.1",
     "styled-components": "^6.1.1",
     "styled-system": "^5.1.5",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.5.1",

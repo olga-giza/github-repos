@@ -19,6 +19,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * `yarn lint` - runs linter for project files (pre-commit git hook)
 * `yarn lint:fix` - runs linter for project files and fixes found issues if possible
 
+## Run project in a Docker container 
+
+* `docker compose up web`
+
 ## Notes
 
 * 
