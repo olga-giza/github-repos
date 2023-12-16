@@ -3,6 +3,7 @@ import React, { FC, Fragment } from 'react';
 
 import { searchQuery } from './query';
 import { type Repository, type SearchResult } from './types';
+import { useLocale } from '../locale';
 
 const Search: FC = () => {
   const query = 'is:public language:javascript sort:updatedAt';
@@ -10,17 +11,18 @@ const Search: FC = () => {
   const first = 20;
   const variables = { query, after, first };
   const { loading, error, data } = useQuery<SearchResult<Repository>>(searchQuery, { variables });
+  const { t } = useLocale();
 
   if (loading) {
-    return <Fragment>Loading ...</Fragment>;
+    return <Fragment>{t('loading')}</Fragment>;
   }
 
   if (error) {
-    return <Fragment>{error.toString()}</Fragment>;
+    return <Fragment>{t('loading_error')}: {error.message}</Fragment>;
   }
 
   if (!data?.search.edges.length) {
-    return <Fragment>No results found</Fragment>;
+    return <Fragment>{t('empty_results')}</Fragment>;
   }
 
   return (

@@ -1,0 +1,8 @@
+{
+  "language": "en",
+  "translations": {
+    "loading": "Loading...",
+    "loading_error": "An error occurred",
+    "empty_results": "No results found."
+  }
+}

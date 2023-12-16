@@ -1,16 +1,19 @@
 import { ApolloProvider } from '@apollo/client';
 import React, { FC } from 'react';
 
-import SearchList from './modules/search';
-import { ThemeProvider } from './ui/theme';
 import apolloClient from './graphql/client';
+import SearchList from './modules/search';
+import { LocaleProvider } from './modules/locale';
+import { ThemeProvider } from './ui/theme';
 
 const App: FC = () => (
   <main>
     <ThemeProvider>
-      <ApolloProvider client={apolloClient}>
-        <SearchList />
-      </ApolloProvider>
+      <LocaleProvider>
+        <ApolloProvider client={apolloClient}>
+          <SearchList />
+        </ApolloProvider>
+      </LocaleProvider>
     </ThemeProvider>
   </main>
 );
