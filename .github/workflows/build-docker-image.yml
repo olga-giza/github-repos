@@ -35,7 +35,7 @@ jobs:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_TOKEN}}
 
-      - name: Create docker image and set permissions
+      - name: Create docker image
         run: |
-          docker build --build-arg REACT_APP_GITHUB_AUTH_TOKEN=${{secrets.REACT_APP_GITHUB_AUTH_TOKEN}} -t olgagiza/github-repos:${{GITHUB_SHA}} .
-          docker push olgagiza/github-repos:${{GITHUB_SHA}}
+          docker build --build-arg REACT_APP_GITHUB_AUTH_TOKEN=${{secrets.REACT_APP_GITHUB_AUTH_TOKEN}} -t olgagiza/github-repos:${{github.sha}} .
+          docker push olgagiza/github-repos:${{github.sha}}
