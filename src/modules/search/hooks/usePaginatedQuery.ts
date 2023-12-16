@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { SearchResult } from '../types';
 import { searchQuery } from '../query';
+import { type SearchResult } from '../types';
 
 interface Cursor {
   after?: string;
@@ -10,7 +10,7 @@ interface Cursor {
 
 const PAGE_SIZE = 20;
 
-const usePaginatedQuery = <T, >(queryText: string) => {
+export const usePaginatedQuery = <T, >(queryText: string) => {
   const query = `is:public language:javascript sort:updatedAt ${queryText}`;
   const [cursor, setCursor] = useState<Cursor>({});
   const variables = { query, first: PAGE_SIZE, ...cursor };
@@ -30,5 +30,3 @@ const usePaginatedQuery = <T, >(queryText: string) => {
 
   return { ...result, requestNextPage, requestPreviousPage };
 };
-
-export default usePaginatedQuery;

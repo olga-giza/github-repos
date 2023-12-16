@@ -1,9 +1,9 @@
 import React, { FC, FormEvent, Fragment, useState } from 'react';
 
-import { type Repository } from './types';
-import { useLocale } from '../locale';
-import usePaginatedQuery from './hooks/usePaginatedQuery';
 import { collectFormData } from '../../utils/form';
+import { useLocale } from '../locale';
+import { usePaginatedQuery } from './hooks/usePaginatedQuery';
+import { type Repository } from './types';
 
 interface SearchForm {
   search: string;
@@ -25,7 +25,7 @@ const Search: FC = () => {
   return (
     <ul>
       <form onSubmit={onSubmit}>
-        <input name="search" />
+        <input name="search" placeholder={t('search_placeholder')} />
         <input type="submit" value={t('search')} />
       </form>
       {loading ? (
@@ -39,12 +39,8 @@ const Search: FC = () => {
       ) : (
         <Fragment>{t('empty_results')}</Fragment>
       )}
-      {data?.search.pageInfo.hasNextPage && (
-        <button disabled={!!error || loading} onClick={requestPreviousPage}>{t('prev_page')}</button>
-      )}
-      {data?.search.pageInfo.hasNextPage && (
-        <button disabled={!!error || loading} onClick={requestNextPage}>{t('next_page')}</button>
-      )}
+      <button disabled={!data?.search.pageInfo.hasPreviousPage} onClick={requestPreviousPage}>{t('prev_page')}</button>
+      <button disabled={!data?.search.pageInfo.hasNextPage} onClick={requestNextPage}>{t('next_page')}</button>
     </ul>
   );
 };

@@ -6,6 +6,7 @@
     "empty_results": "No results found.",
     "next_page": "Next page",
     "prev_page": "Previous page",
-    "search": "Search"
+    "search": "Search",
+    "search_placeholder": "What you are looking for?"
   }
 }
