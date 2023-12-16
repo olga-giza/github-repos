@@ -8,7 +8,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "serve": "serve -s build -l 4000",
     "postinstall": "husky install",
     "lint": "eslint . --ext .ts,.tsx",
