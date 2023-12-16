@@ -31,7 +31,7 @@ const List = styled.ul`
   padding: 0;
 `;
 
-const Search: FC = () => {
+export const Search: FC = () => {
   const [query, setQuery] = useState<string>('');
   const { loading, error, data, requestNextPage, requestPreviousPage } = usePaginatedQuery<Repository>(query);
   const { t } = useLocale();
@@ -80,5 +80,3 @@ const Search: FC = () => {
     </Block>
   );
 };
-
-export default Search;

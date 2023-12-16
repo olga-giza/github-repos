@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 
-import SearchList from './index';
+import { Search } from './index';
 import { searchQuery } from './query';
 import { ThemeProvider } from '../../ui/Theme';
 import { type Repository } from './types';
@@ -34,14 +34,14 @@ describe('SearchList', () => {
 
   it('shows loading state while waiting', () => {
     useQueryMock.mockReturnValueOnce({ loading: true });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByText('loading')).toBeInTheDocument();
   });
 
   it('renders message when error occurred', () => {
     useQueryMock.mockReturnValueOnce({ loading: false, error: new Error('Unknown') });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByText('loading_error: Unknown')).toBeInTheDocument();
   });
@@ -49,7 +49,7 @@ describe('SearchList', () => {
   it('renders empty state', () => {
     const response = { search: { edges: [], pageInfo: pageInfoMock } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByText('empty_results')).toBeInTheDocument();
   });
@@ -57,7 +57,7 @@ describe('SearchList', () => {
   it('renders list when loading succeeded', () => {
     const response = { search: { edges: listMock, pageInfo: pageInfoMock } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByRole('list')).toBeInTheDocument();
     expect(screen.getAllByRole('listitem')).toHaveLength(1);
@@ -66,7 +66,7 @@ describe('SearchList', () => {
   it('sets pagination buttons disabled if there is nothing to load ', () => {
     const response = { search: { edges: listMock, pageInfo: pageInfoMock } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByText('prev_page')).toBeDisabled();
     expect(screen.getByText('next_page')).toBeDisabled();
@@ -76,7 +76,7 @@ describe('SearchList', () => {
     const pagination = { ...pageInfoMock, hasPreviousPage: true };
     const response = { search: { edges: listMock, pageInfo: pagination } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByText('prev_page')).toBeEnabled();
     expect(screen.getByText('next_page')).toBeDisabled();
@@ -86,7 +86,7 @@ describe('SearchList', () => {
     const pagination = { ...pageInfoMock, hasNextPage: true };
     const response = { search: { edges: listMock, pageInfo: pagination } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByText('prev_page')).toBeDisabled();
     expect(screen.getByText('next_page')).toBeEnabled();
@@ -96,7 +96,7 @@ describe('SearchList', () => {
     const pagination = { ...pageInfoMock, hasPreviousPage: true, startCursor: '10' };
     const response = { search: { edges: listMock, pageInfo: pagination } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     fireEvent.click(screen.getByText('prev_page'));
 
@@ -111,7 +111,7 @@ describe('SearchList', () => {
     const pagination = { ...pageInfoMock, hasNextPage: true, endCursor: '10' };
     const response = { search: { edges: listMock, pageInfo: pagination } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     fireEvent.click(screen.getByText('next_page'));
 
@@ -123,7 +123,7 @@ describe('SearchList', () => {
   });
 
   it('renders search form', () => {
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     expect(screen.getByPlaceholderText('search_placeholder')).toBeInTheDocument();
     expect(screen.getByDisplayValue('search')).toBeInTheDocument();
@@ -133,7 +133,7 @@ describe('SearchList', () => {
     const pagination = { ...pageInfoMock, hasNextPage: true, endCursor: '10' };
     const response = { search: { edges: listMock, pageInfo: pagination } };
     useQueryMock.mockReturnValueOnce({ loading: false, data: response });
-    render(<ThemeProvider><SearchList /></ThemeProvider>);
+    render(<ThemeProvider><Search /></ThemeProvider>);
 
     fireEvent.change(screen.getByPlaceholderText('search_placeholder'), {
       target: { value: 'demo' },

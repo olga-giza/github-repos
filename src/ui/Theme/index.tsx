@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import lightTheme from './palette/light';
-import GlobalStyles from './global';
+import { GlobalStyles } from './global';
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => (
   <StyledThemeProvider theme={lightTheme}>

@@ -1,12 +1,12 @@
 import { ApolloProvider } from '@apollo/client';
 import React, { FC } from 'react';
 
-import apolloClient from './graphql/client';
-import SearchList from './modules/search';
-import { LocaleProvider } from './modules/locale';
-import { ThemeProvider } from './ui/Theme';
+import apolloClient from '../../graphql/client';
+import { ThemeProvider } from '../../ui/Theme';
+import { Search as SearchList } from '../search';
+import { LocaleProvider } from '../locale';
 
-const App: FC = () => (
+export const App: FC = () => (
   <main>
     <ThemeProvider>
       <LocaleProvider>
@@ -17,5 +17,3 @@ const App: FC = () => (
     </ThemeProvider>
   </main>
 );
-
-export default App;
