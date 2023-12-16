@@ -57,7 +57,7 @@ export const Search: FC = () => {
               <Text my="12px">{t('loading')}</Text>
             </Block>
           ) : error ? (
-            <Alert m="12px">{t('loading_error')}: {'Unknown'}</Alert>
+            <Alert m="12px">{t('loading_error')}: {error.message}</Alert>
           ) : data?.search.edges.length ? (
             <List>
               {data?.search.edges.map(({ node }) => (
