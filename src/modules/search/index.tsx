@@ -23,7 +23,7 @@ const Search: FC = () => {
   };
 
   return (
-    <ul>
+    <div>
       <form onSubmit={onSubmit}>
         <input name="search" placeholder={t('search_placeholder')} />
         <input type="submit" value={t('search')} />
@@ -33,15 +33,15 @@ const Search: FC = () => {
       ) : error ? (
         <Fragment>{t('loading_error')}: {error.message}</Fragment>
       ) : data?.search.edges.length ? (
-        <Fragment>
+        <ul>
           {data?.search.edges.map(({ node }) => <li key={node.id}>{node.name}</li>)}
-        </Fragment>
+        </ul>
       ) : (
         <Fragment>{t('empty_results')}</Fragment>
       )}
       <button disabled={!data?.search.pageInfo.hasPreviousPage} onClick={requestPreviousPage}>{t('prev_page')}</button>
       <button disabled={!data?.search.pageInfo.hasNextPage} onClick={requestNextPage}>{t('next_page')}</button>
-    </ul>
+    </div>
   );
 };
 
