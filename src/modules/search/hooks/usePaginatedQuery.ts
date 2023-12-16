@@ -11,7 +11,7 @@ interface Cursor {
 const PAGE_SIZE = 20;
 
 export const usePaginatedQuery = <T, >(queryText: string) => {
-  const query = `is:public language:javascript sort:updatedAt ${queryText}`;
+  const query = `is:public sort:updatedAt ${queryText}`;
   const [cursor, setCursor] = useState<Cursor>({});
   const variables = { query, first: PAGE_SIZE, ...cursor };
   const result = useQuery<SearchResult<T>>(searchQuery, { variables });

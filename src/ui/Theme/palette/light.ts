@@ -5,8 +5,8 @@ const light: DefaultTheme = {
     neutral: {
       10: '#FFFFFF',
       20: '#F9F9FC',
-      30: '#D7D7DD',
-      40: '#B1B1B7',
+      30: '#e8e8ea',
+      40: '#c2c2c7',
       50: '#8E8E92',
       60: '#68686A',
       70: '#444446',
@@ -15,6 +15,7 @@ const light: DefaultTheme = {
       100: '#000000',
     },
     primary: {
+      40: '#62aed0',
       50: '#2391c2',
     },
     success: {

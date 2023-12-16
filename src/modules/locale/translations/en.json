@@ -7,6 +7,13 @@
     "next_page": "Next page",
     "prev_page": "Previous page",
     "search": "Search",
-    "search_placeholder": "What you are looking for?"
+    "search_placeholder": "What you are looking for?",
+    "logo": "Logo",
+    "by": "By",
+    "fork_count": "Forks",
+    "star_count": "Start",
+    "primary_language": "Primary Language",
+    "created_at": "Created at",
+    "updated_at": "Updated at"
   }
 }
