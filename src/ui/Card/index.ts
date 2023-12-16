@@ -15,6 +15,6 @@ Card.defaultProps = {
   borderRadius: 3,
   bg: 'neutral.10',
   color: 'neutral.70',
-  p: 12,
+  p: 's',
 };
 

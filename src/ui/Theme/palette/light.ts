@@ -27,7 +27,13 @@ const light: DefaultTheme = {
     error: {
       50: '#DB555A',
     },
-  }
+  },
+  space: {
+    xs: '6px',
+    s: '12px',
+    m: '18px',
+    l: '24px',
+  },
 };
 
 export default light;

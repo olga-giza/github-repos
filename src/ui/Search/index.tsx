@@ -11,7 +11,7 @@ interface SearchProps {
 }
 
 const Logo = styled.img`
-  margin-right: 6px;
+  margin-right: ${({ theme }) => theme.space.xs};
 `;
 
 export const Search: FC<SearchProps> = ({ onSubmit }) => {

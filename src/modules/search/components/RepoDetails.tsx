@@ -15,7 +15,7 @@ const BoldText = styled(Text)``;
 
 BoldText.defaultProps = {
   fontWeight: 700,
-  ml: '6px',
+  ml: 'xs',
 };
 
 export const RepoDetails: FC<Repository> = ({

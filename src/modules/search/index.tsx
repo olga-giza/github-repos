@@ -26,8 +26,8 @@ CenteredElement.defaultProps = {
 };
 
 const List = styled.ul`
+  margin: ${({ theme }) => theme.space.s};
   list-style: none;
-  margin: 12px;
   padding: 0;
 `;
 
@@ -61,7 +61,7 @@ const Search: FC = () => {
           ) : data?.search.edges.length ? (
             <List>
               {data?.search.edges.map(({ node }) => (
-                <Card as="li" key={node.id} mb="6px">
+                <Card as="li" key={node.id} mb="xs">
                   <RepoDetails {...node} />
                 </Card>
               ))}

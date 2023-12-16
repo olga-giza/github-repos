@@ -24,7 +24,7 @@ export type ButtonProps = PropsWithChildren
   & SpaceProps
   & ButtonHTMLAttributes<unknown>;
 
-export const BaseButton: IStyledComponent<'web', ButtonProps> = styled.button`
+const BaseButton: IStyledComponent<'web', ButtonProps> = styled.button`
   display: flex;
   cursor: pointer;
   ${color};

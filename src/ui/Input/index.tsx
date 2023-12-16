@@ -42,6 +42,6 @@ Input.defaultProps = {
   color: 'neutral.70',
   lineHeight: '36px',
   fontSize: [14, 18],
-  px: '12px',
+  px: 's',
 };
 

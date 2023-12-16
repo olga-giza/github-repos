@@ -20,9 +20,9 @@ Container.defaultProps = {
   justifyContent: 'center',
   bg: 'neutral.10',
   width: '100%',
-  pt: '12px',
-  px: '6px',
-  pb: '24px',
+  pt: 's',
+  px: 'xs',
+  pb: 'l',
 };
 
 export const Pagination: FC<SearchProps> = ({
