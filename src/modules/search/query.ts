@@ -34,15 +34,19 @@ export const searchQuery = gql`
   ${RepositoryFragment}
 
   query (
-    $first: Int!
     $query: String!
     $after: String
+    $before: String
+    $first: Int
+    $last: Int
   ) { 
     search(
-      type: REPOSITORY,
-      query: $query,
+      type: REPOSITORY
+      query: $query
       after: $after
+      before: $before
       first: $first,
+      last: $last,
     ) {
       edges {
         node {
