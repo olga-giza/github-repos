@@ -142,7 +142,7 @@ describe('SearchList', () => {
 
     expect(useQueryMock).toHaveBeenCalledWith(searchQuery, {
       variables: expect.objectContaining({
-        query: 'is:public sort:updatedAt demo',
+        query: 'is:public demo',
       }),
     });
   });
