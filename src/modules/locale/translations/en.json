@@ -3,6 +3,8 @@
   "translations": {
     "loading": "Loading...",
     "loading_error": "An error occurred",
-    "empty_results": "No results found."
+    "empty_results": "No results found.",
+    "next_page": "Next page",
+    "prev_page": "Previous page"
   }
 }

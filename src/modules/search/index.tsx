@@ -1,33 +1,32 @@
-import { useQuery } from '@apollo/client';
 import React, { FC, Fragment } from 'react';
 
-import { searchQuery } from './query';
-import { type Repository, type SearchResult } from './types';
+import { type Repository } from './types';
 import { useLocale } from '../locale';
+import usePaginatedQuery from './hooks/usePaginatedQuery';
 
 const Search: FC = () => {
-  const query = 'is:public language:javascript sort:updatedAt';
-  const after = null;
-  const first = 20;
-  const variables = { query, after, first };
-  const { loading, error, data } = useQuery<SearchResult<Repository>>(searchQuery, { variables });
+  const { loading, error, data, requestNextPage, requestPreviousPage } = usePaginatedQuery<Repository>();
   const { t } = useLocale();
-
-  if (loading) {
-    return <Fragment>{t('loading')}</Fragment>;
-  }
-
-  if (error) {
-    return <Fragment>{t('loading_error')}: {error.message}</Fragment>;
-  }
-
-  if (!data?.search.edges.length) {
-    return <Fragment>{t('empty_results')}</Fragment>;
-  }
 
   return (
     <ul>
-      {data?.search.edges.map(({ node }) => <li key={node.id}>{node.name}</li>)}
+      {loading ? (
+        <Fragment>{t('loading')}</Fragment>
+      ) : error ? (
+        <Fragment>{t('loading_error')}: {error.message}</Fragment>
+      ) : data?.search.edges.length ? (
+        <Fragment>
+          {data?.search.edges.map(({ node }) => <li key={node.id}>{node.name}</li>)}
+        </Fragment>
+      ) : (
+        <Fragment>{t('empty_results')}</Fragment>
+      )}
+      {data?.search.pageInfo.hasNextPage && (
+        <button disabled={!!error || loading} onClick={requestPreviousPage}>{t('prev_page')}</button>
+      )}
+      {data?.search.pageInfo.hasNextPage && (
+        <button disabled={!!error || loading} onClick={requestNextPage}>{t('next_page')}</button>
+      )}
     </ul>
   );
 };
