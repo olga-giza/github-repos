@@ -27,4 +27,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 * If there would be actual need to localize the app, locale module can be easily replaced by lib like `react-i18next`.
 * As this is super-small task I decided not to use any design library and play more with styled component themes.
-* 
+* Ah, and I used a list which fits better for smaller devices. Hope it's fine, but in any case I can quickly change it into a table view. 
